@@ -52,7 +52,7 @@ define(function(require) {
             this.set("userSortedList", userSortedList);
             _.each(userSortedList, function(item, index) {
                 userAnswer.push(parseInt(item.dataset.itemid));
-                tempArray.push(items[parseInt(item.dataset.itemid) - 1]);
+                tempArray.push(items[parseInt(item.dataset.itemid)]);
             });
             this.set({
                 '_items': tempArray,
