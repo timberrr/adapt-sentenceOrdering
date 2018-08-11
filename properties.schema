@@ -77,6 +77,14 @@
          ],
          "help":"How many attempts the learner is allowed"
       },
+      "_canShowFeedback": {
+        "type": "boolean",
+        "required": true,
+        "default": true,
+        "title": "Display Feedback",
+        "inputType": "Checkbox",
+        "validators": []
+      },
       "_isRandom":{
          "type":"boolean",
          "required":false,
@@ -185,17 +193,15 @@
                   "validators":[
                      "number"
                   ],
-                  "help":"number should be uniqe"
+                  "help":"number should be unique"
                },
                "prefixTitle":{
                   "type":"string",
                   "required":false,
                   "default":"",
                   "inputType":"Text",
-                  "validators":[
-
-                  ],
-                  "help":"This is the senetnce Prefix text",
+                  "validators":[],
+                  "help":"This is the sentence Prefix text",
                   "translatable":true
                },
                "sentence":{
@@ -203,61 +209,66 @@
                   "required":false,
                   "default":"",
                   "inputType":"Text",
-                  "validators":[
-
-                  ],
-                  "help":"This is the senetnce  text",
+                  "validators":[],
+                  "help":"This is the sentence text",
                   "translatable":true
                },
                "position":{
                   "type":"array",
                   "required":true,
                   "title":"sentence actual position",
-                  "position":{
+                  "items":{
                      "type":"number",
                      "required":true,
                      "default":1,
-                     "title":"acttual position of sentences",
+                     "title":"actual position of sentences",
                      "inputType":"Number",
                      "validators":[
                         "number"
                      ],
-                     "help":"This also set Multiple postions of sentence"
+                     "help":"This also set Multiple positions of sentence"
                   }
                }
             }
-         },
+         }
+      },
          "_feedback":{
             "type":"object",
-            "required":true,
+            "required":false,
             "title":"Feedback",
             "properties":{
+				"title": {
+				  "type": "string",
+				  "required": false,
+				  "default": "",
+				  "title": "Feedback Title",
+				  "inputType": "Text",
+				  "validators": [],
+				  "help": "Leave blank to have the component's title shown instead.",
+				  "translatable": true
+				},
                "correct":{
                   "type":"string",
                   "required":true,
                   "default":"",
                   "title":"Correct",
                   "inputType":"TextArea",
-                  "validators":[
-                     "required"
-                  ],
+                  "validators":[],
                   "help":"Correct feedback for this question",
                   "translatable":true
                },
                "_incorrect":{
                   "type":"object",
-                  "required":true,
+                  "required":false,
                   "title":"Incorrect Feedback",
                   "properties":{
                      "final":{
                         "type":"string",
-                        "required":true,
+                        "required":false,
                         "default":"",
                         "title":"Incorrect Final",
                         "inputType":"TextArea",
-                        "validators":[
-                           "required"
-                        ],
+                        "validators":[],
                         "help":"Incorrect feedback for the final attempt",
                         "translatable":true
                      },
@@ -267,9 +278,7 @@
                         "default":"",
                         "title":"Incorrect Not Final",
                         "inputType":"TextArea",
-                        "validators":[
-
-                        ],
+                        "validators":[],
                         "help":"Incorrect feedback for any attempt apart from the last attempt",
                         "translatable":true
                      }
@@ -499,6 +508,6 @@
                }
             }
          }
-      }
+      
    }
 }
