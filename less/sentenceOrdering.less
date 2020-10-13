@@ -8,18 +8,20 @@
       width: 100%;
       transform-origin: 0% 0%;
      .sentenceOrdering__container-inner{
-         .prefixTitle__container{
+        .prefixTitle__container{
               position: relative;
               float: left;
               width:30%;
               cursor: auto;
+              padding-right: @item-padding;
               word-break: break-word;
               word-break: break-all;
                .prefixTitle{
                    color: @font-color-inverted;
                    background-color: @item-color;
-                   padding:(@item-padding - 10px);
-                   margin: 0px auto 5px 5px;
+                   padding:(@item-padding * 0.75);
+                   margin: 0px;
+                   margin-bottom: @item-margin;
                      .dir-rtl & {
                        text-align: right;
                    }
@@ -31,19 +33,25 @@
          width:70%;
          word-break: break-word;
          word-break: break-all;
+         ul {
+           margin: 0px;
+           padding: 0px;
+         }
           ul.list li.placeholder, ul.grid li.placeholder {
-            border: dashed 1px #4b4e4f;/* to add border dashed set 1px*/
-            display:inline-block;
+            border: dashed 2px @greyMid; /* to add border dashed set 1px*/
+            background-color: @greyPale;
+            display: block;
             background-color: transparent;
           }
          li{
            position: relative;
            color: @font-color-inverted;
            background-color: @item-color;
-           padding:(@item-padding - 10px);
-           margin: 0px auto 5px 5px;
+           padding:(@item-padding * 0.75);
+           margin: 0px;
+           margin-bottom: @item-margin;
          }
-         .incorrect-resettable{
+         .is-incorrect-resettable{
           cursor: auto !important;
          }
 
@@ -116,5 +124,57 @@
       }
     }
 
+
   }
+
+  // --------------------------------------------------
+  // Item Icons
+  // --------------------------------------------------
+
+  &__item-icon {
+    display: none;
+  }
+
+  &__item-correct-icon .icon {
+    .icon-tick;
+  }
+
+  &__item-incorrect-icon .icon {
+    .icon-cross;
+  }
+
+  
+  // --------------------------------------------------
+  // Class to show the users answers
+  // --------------------------------------------------
+  &__widget.show-user-answer {
+    .is-correct .sentenceOrdering__item-correct-icon,
+    .is-incorrect .sentenceOrdering__item-incorrect-icon {
+      display: block;
+    }
+  }
+
+  &__widget.show-user-answer {
+    .sentenceOrdering__item:not(.is-correct):not(.is-incorrect) .sentenceOrdering__item-answer-icon {
+      display: block;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Class to show the correct answers
+  // --------------------------------------------------
+  &__widget.show-correct-answer {
+    .is-correct .sentenceOrdering__item-correct-icon,
+    .is-incorrect .sentenceOrdering__item-correct-icon {
+      display: block;
+    }
+  }
+
+  &__widget.show-correct-answer {
+    .sentenceOrdering__item:not(.is-correct):not(.is-incorrect) .sentenceOrdering__item-answer-icon {
+      display: block;
+    }
+  }
+
 }

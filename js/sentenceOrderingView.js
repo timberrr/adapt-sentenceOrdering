@@ -39,7 +39,7 @@ define(function(require) {
                 });
                 self.setDefaultHeight();
             }).on('sortable:change', function(event, ui) {
-                $("li.placeholder").css('height', ui.item.height() + 'px');
+                $("li.placeholder").css('height', ui.item.outerHeight() + 'px');
             });
         },
 
@@ -127,7 +127,7 @@ define(function(require) {
             var numberOfIncorrectAnswers = this.model.get('_numberOfIncorrectAnswers');
             var attemptsLeft = this.model.get('_attemptsLeft');
             if (attemptsLeft !== 0 && numberOfIncorrectAnswers > 0)
-                this.model.get('_sentenceListJqueryObject').children('li').removeClass('correct incorrect').addClass('incorrect-resettable');
+                this.model.get('_sentenceListJqueryObject').children('li').removeClass('is-correct is-incorrect').addClass('is-incorrect-resettable');
         },
 
         // This is important and should give the user feedback on how they answered the question
@@ -137,7 +137,7 @@ define(function(require) {
             var $sentences = this.$('.sentenceSequence');
             _.each(this.model.get('isItemOnCorrectPlace'), function(isCorrectItem, index) {
                 var $item = $sentences.eq(index);
-                $item.removeClass('correct incorrect').addClass(isCorrectItem ? 'correct' : 'incorrect')
+                $item.removeClass('is-correct is-incorrect').addClass(isCorrectItem ? 'is-correct' : 'is-incorrect')
             }, this);
         },
 
