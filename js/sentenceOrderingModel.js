@@ -52,12 +52,13 @@ define(function(require) {
             this.set("userSortedList", userSortedList);
             _.each(userSortedList, function(item, index) {
                 userAnswer.push(parseInt(item.dataset.itemid));
-                tempArray.push(items[parseInt(item.dataset.itemid)]);
+                tempArray.push(items[parseInt(item.dataset.itemid)-1]);
             });
             this.set({
                 '_items': tempArray,
                 '_userAnswer': userAnswer
             });
+
         },
 
         isCorrect: function() {
@@ -67,6 +68,7 @@ define(function(require) {
                 numberOfCorrectAnswers = 0,
                 numberOfIncorrectAnswers = 0,
                 isItemOnCorrectPlace = [];
+
             _.each(userAnswer, function(item, index) {
                 if (_.contains(itemsSorted[index].position, item)) {
                     numberOfCorrectAnswers++;

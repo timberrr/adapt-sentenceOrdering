@@ -16,7 +16,7 @@ define(function(require) {
             this.setHeight();
             this.resizeItems();
             this.showMarking();
-            if (!this.model.get('_isPrefixTitle')) this.$('.sentence-container').width('100%');
+            if (!this.model.get('_isPrefixTitle')) this.$('.sentence__container').width('100%');
             //first time html structure
             this.model.set('_sentenceListHtml', this.$("ul[data-id='sortable']").html());
             this.model.set('_sentenceListJqueryObject', this.$("ul[data-id='sortable']"));
@@ -97,7 +97,7 @@ define(function(require) {
                         '-webkit-transform': 'scale3d(' + scale + ',' + scale + ',' + scale + ')',
                         'transform': 'scale(' + scale + ')'
                     }).attr('zoom', scale);
-                    $el.height(this.$('.sentence-container').height() * scale);
+                    $el.height(this.$('.sentence__container').height() * scale);
                 }
                 var starterData = {
                     size: {

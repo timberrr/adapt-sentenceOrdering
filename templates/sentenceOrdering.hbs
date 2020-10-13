@@ -1,22 +1,26 @@
-<div class="sentenceOrdering-inner component-inner" role="region" aria-label="{{_globals._components.sentenceOrdering.ariaRegion}}" {{#if _globals._components.sentenceOrdering.ariaRegion}} tabindex="0" {{/if}} data-id="scaleableWrapper">
+<div class="sentenceOrdering__inner component__inner" role="region" aria-label="{{_globals._components.sentenceOrdering.ariaRegion}}" {{#if _globals._components.sentenceOrdering.ariaRegion}} tabindex="0" {{/if}} data-id="scaleableWrapper">
     {{> component this}}
-    <div class="sentenceOrdering-widget component-widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}" data-id="innerWrapper" {{#if _shouldScale}} style="width:{{_defaultWidth}}px;"{{/if}}>
-        <div class="sentenceOrdering-container-inner">
+    <div class="sentenceOrdering__widget component__widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}" data-id="innerWrapper" {{#if _shouldScale}} style="width:{{_defaultWidth}}px;"{{/if}}>
+        <div class="sentenceOrdering__container-inner">
           <div class="container">
                     {{#if _isPrefixTitle}}
-                    <div data-prefixTitle="prefixTitle" class="prefixTitle-container">
+                    <div data-prefixTitle="prefixTitle" class="prefixTitle__container">
                         {{#each _prefixTitles}}
                             <div data-prefixTitleId="prefixTitle-{{inc @index}}" class="prefixTitle">{{{this}}}</div>
                         {{/each}}
                     </div>
                     {{/if}}
-                    <div class="sentence-container">
+                    <div class="sentence__container">
                         <ul class="content list" data-id="sortable" style="list-style:none;">
                             {{#each _items}}
                                 <li data-itemId="{{id}}" class="sentenceSequence"><span>{{{sentence}}}</span>
-                                 <div class="sentenceOrdering-item-state">
-                                        <div class="sentenceOrdering-item-icon sentenceOrdering-correct-icon icon icon-tick"></div>
-                                        <div class="sentenceOrdering-item-icon sentenceOrdering-incorrect-icon icon icon-cross"></div>
+                                 <div class="sentenceOrdering__item-state">
+                                        <div class="sentenceOrdering__item-icon sentenceOrdering__item-correct-icon">
+                                            <div class="icon"></div>
+                                        </div>
+                                        <div class="sentenceOrdering__item-icon sentenceOrdering__item-incorrect-icon">
+                                            <div class="icon"></div>
+                                        </div>
                                  </div>
                                </li>
                             {{/each}}
@@ -26,6 +30,6 @@
                 </div>
         </div>
     </div>
-    <div class="buttons">
+    <div class="btn__container">
     </div>
 </div>
