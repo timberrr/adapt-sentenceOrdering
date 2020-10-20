@@ -4,64 +4,124 @@
   
   &__widget {
       position: relative;
-      display: inline-block;
-      width: 100%;
       transform-origin: 0% 0%;
-     .sentenceOrdering__container-inner{
-        .prefixTitle__container{
-              position: relative;
-              float: left;
-              width:30%;
-              cursor: auto;
-              padding-right: @item-padding;
-              word-break: break-word;
-              word-break: break-all;
-               .prefixTitle{
-                   color: @font-color-inverted;
-                   background-color: @item-color;
-                   padding:(@item-padding * 0.75);
-                   margin: 0px;
-                   margin-bottom: @item-margin;
-                     .dir-rtl & {
-                       text-align: right;
-                   }
-               }
-         }
-       .sentence__container{
-         position: relative;
-         float: left;
-         width:70%;
-         word-break: break-word;
-         word-break: break-all;
-         ul {
-           margin: 0px;
-           padding: 0px;
-         }
-          ul.list li.placeholder, ul.grid li.placeholder {
-            border: dashed 2px @greyMid; /* to add border dashed set 1px*/
-            background-color: @greyPale;
-            display: block;
-            background-color: transparent;
-          }
-         li{
-           position: relative;
-           color: @font-color-inverted;
-           background-color: @item-color;
-           padding:(@item-padding * 0.75);
-           margin: 0px;
-           margin-bottom: @item-margin;
-         }
-         .is-incorrect-resettable{
-          cursor: auto !important;
-         }
+  }
 
-       }
-       .no-touch &:hover {
-        li {
-         cursor: pointer;
+  &__prefix-container{
+    display: flex;
+    position: relative;
+    cursor: auto;
+    margin: 0px;
+    padding: 0px;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+
+  &__prefix-item{
+    color: @font-color;
+    background-color: @item-color-inverted;
+    font-weight: @font-weight-bold;
+    padding:(@item-padding * 0.75);
+    margin: 0px;
+      .dir-rtl & {
+        text-align: right;
+    }
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+  }
+
+  &__container-inner{
+    display: flex;
+
+    ul {
+      list-style: none;
+    }
+
+    &.is-vertical {
+      flex-direction: row;
+
+      .sentenceOrdering__item-container, .sentenceOrdering__prefix-container {
+        flex-direction: column;
+
+        &:not(:last-child) {
+          margin-right: @item-margin;
         }
-       }
-     }
+
+        li:not(:last-child) {
+          margin-bottom: @item-margin;
+        }
+      }
+    }
+
+    &.is-horizontal {
+      flex-direction: column;
+
+      .sentenceOrdering__item-container, .sentenceOrdering__prefix-container {
+        flex-direction: row;
+        text-align: center;
+
+        &:not(:last-child) {
+          margin-bottom: @item-margin;
+        }
+
+        li:not(:last-child) {
+          margin-right: @item-margin;
+        }
+      }
+    }
+
+   .no-touch &:hover {
+    li {
+     cursor: pointer;
+    }
+   }
+  }
+
+  &__item-container{
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+
+    li{
+      position: relative;
+      color: @font-color-inverted;
+      background-color: @item-color;
+      padding:(@item-padding * 0.75);
+      margin: 0px;
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 0;
+
+      &.has-graphic {
+        padding:0px;
+
+        span {
+          padding: (@item-padding * 0.75);
+          display: block;
+        }
+      }
+
+      &.hidden-text {
+        background-color: transparent;
+
+        span {
+          display: none;
+        }
+      }
+
+      
+
+      &.sortable-ghost {
+        opacity: 0.4;
+      }
+    }
+    
+    .is-incorrect-resettable{
+    cursor: auto !important;
+    }
 
   }
   
@@ -77,20 +137,6 @@
   }
 
   .component__widget{
-    .sentenceOrdering__item-icon{
-      display:none;
-    }
-
-    .sentenceOrdering__item-correct-icon {
-      color:@validation-success;
-      display:none;
-    }
-
-    .sentenceOrdering__item-incorrect-icon {
-      color:@validation-error;
-      display:none;
-    }
-
     &.show-user-answer {
       .incorrect {
         .sentenceOrdering__item-incorrect-icon{
@@ -123,8 +169,20 @@
         }
       }
     }
+  }
 
+  &__item-icon{
+    display:none;
+  }
 
+  &__item-correct-icon {
+    /*color:@validation-success;*/
+    display:none;
+  }
+
+  &__item-incorrect-icon {
+    /*color:@validation-error;*/
+    display:none;
   }
 
   // --------------------------------------------------

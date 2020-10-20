@@ -147,20 +147,18 @@
             "number"
          ]
       },
-      "_shouldScale":{
+      "_isHorizontal": {
          "type":"boolean",
-         "required":true,
-         "default":false,
-         "title":"shouldScale",
+         "required":"false",
+         "default":"false",
+         "title":"isHorizontal",
          "inputType":{
             "type":"Boolean",
             "options":[
                true,
                false
             ]
-         },
-         "validators":[],
-         "help":""
+         }
       },
       "_isPrefixTitle":{
          "type":"boolean",
@@ -176,6 +174,36 @@
          },
          "validators":[],
          "help":"set if need to prefix Title"
+      },
+      "_isGraphicQuestion":{
+         "type":"boolean",
+         "required":false,
+         "default":false,
+         "title":"Is Graphic Only",
+         "inputType":{
+            "type":"Boolean",
+            "options":[
+               true,
+               false
+            ]
+         },
+         "validators":[],
+         "help":"set if graphics are used for sorting"
+      },
+      "_hideText":{
+         "type":"boolean",
+         "required":false,
+         "default":false,
+         "title":"Hide Text",
+         "inputType":{
+            "type":"Boolean",
+            "options":[
+               true,
+               false
+            ]
+         },
+         "validators":[],
+         "help":"set if only graphic should be visible"
       },
       "_items":{
          "type":"array",
@@ -213,6 +241,39 @@
                   "help":"This is the sentence text",
                   "translatable":true
                },
+               "_graphic": {
+                "type": "object",
+                "required": false,
+                "title": "Graphic",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "inputType": "Asset:image",
+                    "validators": [],
+                    "help": "Large image for this item - used on desktop"
+                  },
+                  "alt": {
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "inputType": "Text",
+                    "validators": [],
+                    "help": "Alternative text for the image",
+                    "translatable": true
+                  },
+                  "attribution": {
+                    "type": "string",
+                    "required": false,
+                    "default": "",
+                    "inputType": "Text",
+                    "validators": [],
+                    "help": "Text to be displayed as an attribution",
+                    "translatable": true
+                  }
+                }
+              },
                "position":{
                   "type":"array",
                   "required":true,

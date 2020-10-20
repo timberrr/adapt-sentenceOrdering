@@ -1,33 +1,32 @@
 <div class="sentenceOrdering__inner component__inner" role="region" aria-label="{{_globals._components.sentenceOrdering.ariaRegion}}" {{#if _globals._components.sentenceOrdering.ariaRegion}} tabindex="0" {{/if}} data-id="scaleableWrapper">
     {{> component this}}
-    <div class="sentenceOrdering__widget component__widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}" data-id="innerWrapper" {{#if _shouldScale}} style="width:{{_defaultWidth}}px;"{{/if}}>
-        <div class="sentenceOrdering__container-inner">
-          <div class="container">
-                    {{#if _isPrefixTitle}}
-                    <div data-prefixTitle="prefixTitle" class="prefixTitle__container">
-                        {{#each _prefixTitles}}
-                            <div data-prefixTitleId="prefixTitle-{{inc @index}}" class="prefixTitle">{{{this}}}</div>
-                        {{/each}}
-                    </div>
-                    {{/if}}
-                    <div class="sentence__container">
-                        <ul class="content list" data-id="sortable" style="list-style:none;">
-                            {{#each _items}}
-                                <li data-itemId="{{id}}" class="sentenceSequence"><span>{{{sentence}}}</span>
-                                 <div class="sentenceOrdering__item-state">
-                                        <div class="sentenceOrdering__item-icon sentenceOrdering__item-correct-icon">
-                                            <div class="icon"></div>
-                                        </div>
-                                        <div class="sentenceOrdering__item-icon sentenceOrdering__item-incorrect-icon">
-                                            <div class="icon"></div>
-                                        </div>
-                                 </div>
-                               </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-
-                </div>
+    <div class="sentenceOrdering__widget component__widget {{#unless _isEnabled}} disabled {{#if _isInteractionComplete}} complete submitted show-user-answer {{#if _isCorrect}}correct{{/if}} {{/if}} {{/unless}}" data-id="innerWrapper">
+        <div class="sentenceOrdering__container-inner {{#if _isHorizontal}}is-horizontal{{/if}}{{#unless _isHorizontal}}is-vertical{{/unless}}">
+            {{#if _isPrefixTitle}}
+            <ul data-prefixTitle="prefixTitle" class="sentenceOrdering__prefix-container">
+                {{#each _prefixTitles}}
+                    <li data-prefixTitleId="prefix-{{inc @index}}" class="sentenceOrdering__prefix-item">{{{this}}}</li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            <ul class="content list sentenceOrdering__item-container" data-id="sortable">
+                {{#each _items}}
+                    <li data-itemId="{{id}}" class="sentenceOrdering__item {{#if _isLocked}}is-locked {{/if}}{{#if ../_isGraphicQuestion}}has-graphic {{#if ../_isTextHidden}}hidden-text {{/if}}{{/if}}">
+                      {{#if ../_isGraphicQuestion}}
+                      <img class="sentenceOrdering__item-image" src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}>
+                      {{/if}}
+                      <span>{{{sentence}}}</span>
+                      <div class="sentenceOrdering__item-state">
+                          <div class="sentenceOrdering__item-icon sentenceOrdering__item-correct-icon">
+                              <div class="icon"></div>
+                          </div>
+                          <div class="sentenceOrdering__item-icon sentenceOrdering__item-incorrect-icon">
+                              <div class="icon"></div>
+                          </div>
+                      </div>
+                    </li>
+                {{/each}}
+            </ul>
         </div>
     </div>
     <div class="btn__container">
