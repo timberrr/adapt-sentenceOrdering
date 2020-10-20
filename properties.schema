@@ -175,11 +175,11 @@
          "validators":[],
          "help":"set if need to prefix Title"
       },
-      "_isGraphicQuestion":{
+      "_hasGraphic":{
          "type":"boolean",
          "required":false,
          "default":false,
-         "title":"Is Graphic Only",
+         "title":"Has Graphics",
          "inputType":{
             "type":"Boolean",
             "options":[
@@ -190,7 +190,7 @@
          "validators":[],
          "help":"set if graphics are used for sorting"
       },
-      "_hideText":{
+      "_isTextHidden":{
          "type":"boolean",
          "required":false,
          "default":false,

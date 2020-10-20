@@ -11,7 +11,7 @@
             {{/if}}
             <ul class="content list sentenceOrdering__item-container" data-id="sortable">
                 {{#each _items}}
-                    <li data-itemId="{{id}}" class="sentenceOrdering__item {{#if _isLocked}}is-locked {{/if}}{{#if ../_isGraphicQuestion}}has-graphic {{#if ../_isTextHidden}}hidden-text {{/if}}{{/if}}">
+                    <li data-itemId="{{id}}" class="sentenceOrdering__item {{#if _isLocked}}is-locked {{/if}}{{#if ../_hasGraphic}}has-graphic {{#if ../_isTextHidden}}hidden-text {{/if}}{{/if}}">
                       {{#if ../_isGraphicQuestion}}
                       <img class="sentenceOrdering__item-image" src="{{_graphic.src}}" {{#if _graphic.alt}}aria-label="{{_graphic.alt}}"{{else}}aria-hidden="true"{{/if}}>
                       {{/if}}
